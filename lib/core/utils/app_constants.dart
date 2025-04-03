@@ -15,7 +15,9 @@ class AppGlobalValues {
   static Color getGreen2() =>
       AppGlobalValues.isDarkMode ? Color(0xFF007F66) : Color(0xFF007F66);
 
-  static Color getGreen3() => Color(0xFF003D2E);
+  static Color getGreen3() => AppGlobalValues.isDarkMode
+      ? Colors.white
+      :Color(0xFF003D2E);
 
   static Color getShieldColor() => AppGlobalValues.isDarkMode
       ? Colors.white

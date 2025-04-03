@@ -19,7 +19,7 @@ class BSCJAdminDialog extends StatefulWidget {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            backgroundColor: Colors.white,
+            backgroundColor: AppGlobalValues.getBackgroundColor(),
             insetPadding: EdgeInsets.zero,
             contentPadding: EdgeInsets.zero,
             shape: RoundedRectangleBorder(
@@ -86,13 +86,13 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                         textSize: 16,
                         fontWeight: FontWeight.w600,
                         backgroundColor: AppGlobalValues.getGreen3(),
-                        textColor: Colors.white,
+                        textColor: AppGlobalValues.getBackgroundColor(),
                         textPadding: EdgeInsets.only(left: 5),
                         iconAlignment: IconAlignment.farFromTextLeft,
                         borderColor: AppGlobalValues.getGreen(),
                         icon: ColorFiltered(
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
+                          colorFilter:  ColorFilter.mode(
+                            AppGlobalValues.getBackgroundColor(),
                             BlendMode.srcATop,
                           ),
                           child: BSCJAssets.icons.checkIcon
