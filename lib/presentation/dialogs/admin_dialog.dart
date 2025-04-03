@@ -56,7 +56,7 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    "Scanezi bilete ?",
+                    "Schimbi modul ?",
                     maxLines: 1,
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(

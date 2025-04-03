@@ -68,7 +68,6 @@ class ScannedTicketInfo extends StatelessWidget {
           color: AppGlobalValues.getGreen().withOpacity(0.6),
         ),
         SizedBox(height: 12),
-
         // Container cu informațiile scanate
         Container(
           padding: EdgeInsets.all(16),

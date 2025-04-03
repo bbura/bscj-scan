@@ -116,11 +116,18 @@ class _MyHomePageState extends State<MyHomePage> {
               GestureDetector(
                 onTap: () async {
                   print("long press");
-                  final isReadOnly = await BSCJAdminDialog.show(context);
-                  if (isReadOnly is bool) {
+                  if (_isReadOnly) {
+                    final isReadOnly = await BSCJAdminDialog.show(context);
+                    if (isReadOnly is bool) {
+                      setState(() {
+                        AppGlobalValues.isReadOnlyChecker = _isReadOnly;
+                        _isReadOnly = isReadOnly;
+                      });
+                    }
+                  } else {
                     setState(() {
+                      _isReadOnly = !_isReadOnly;
                       AppGlobalValues.isReadOnlyChecker = _isReadOnly;
-                      _isReadOnly = isReadOnly;
                     });
                   }
                 },
@@ -189,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ScannedTicketInfo(),
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.15),
+              Spacer(),
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * 0.8,
                 height: 50,
@@ -224,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   child: Text(
-                    _isReadOnly ? "Vizualizeaza bilet" : "Scanează bilet",
+                    "Scanează bilet",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -234,6 +241,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
             ],
           ),
         ),
