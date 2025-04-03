@@ -1,0 +1,1 @@
+ /Users/flaviuburabusiness/bscj-scan/.dart_tool/flutter_build/641230bc8f501f6859f1a01c3aa955cd/native_assets.yaml: 

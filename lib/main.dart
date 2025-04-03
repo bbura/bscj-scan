@@ -2,8 +2,11 @@ import 'dart:math';
 
 import 'package:bscj_scan/data/datasource/paysera_schema.dart';
 import 'package:bscj_scan/data/models/market_tickets.dart';
+import 'package:bscj_scan/presentation/modals/bscj_camera_bs.dart';
+import 'package:bscj_scan/presentation/modals/flush_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 void main() {
@@ -89,19 +92,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'We have this response from server:',
-            ),
-            Text(
-              '$_dataResponse',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          children: <Widget>[],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () async {
+          await BSCJCameraBottomSheet.show(
+            context: context,
+            onCodeScanned:
+                (String scannedCode, MobileScannerController controller) async {
+              controller.dispose();
+              print("scanned code: $scannedCode");
+              Navigator.of(context).pop();
+              displayFlushBar(
+                "Ultima scanare a reusit, felicitari",
+                type: NotificationType.success,
+              ).show(context);
+            },
+          );
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
