@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:bscj_scan/core/utils/assets.gen.dart';
-import 'package:bscj_scan/presentation/modals/flush_bar.dart';
+import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -61,7 +61,7 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
               return MobileScanner(
                 fit: BoxFit.fill,
                 scanWindow: scanWindow,
-                onDetectError: (obj,str){
+                onDetectError: (obj, str) {
                   Navigator.of(context).pop();
                   displayFlushBar(
                     "Ultima scanare a esuat, te rog sa mai incerci",
@@ -84,7 +84,8 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
                 controller: controller,
                 onDetect: (barcodeCapture) async {
                   await widget.onCodeScanned(
-                      barcodeCapture.barcodes.first.rawValue.toString(), controller);
+                      barcodeCapture.barcodes.first.rawValue.toString(),
+                      controller);
                 },
               );
             },

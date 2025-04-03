@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:bscj_scan/data/datasource/paysera_schema.dart';
 import 'package:bscj_scan/data/models/market_tickets.dart';
 import 'package:bscj_scan/presentation/modals/bscj_camera_bs.dart';
-import 'package:bscj_scan/presentation/modals/flush_bar.dart';
+import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
