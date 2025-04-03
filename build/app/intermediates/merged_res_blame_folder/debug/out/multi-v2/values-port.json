@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.bscj_scan.bscj_scan.app-mergeDebugResources-33:/values-port/values-port.xml",
+            "outputFile": "com.example.bscj_scan.bscj_scan.app-mergeDebugResources-34:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/flaviuburabusiness/.gradle/caches/transforms-3/87888829041df7fa3e32d73e1bc29579/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
+                    "source": "/Users/flaviuburabusiness/.gradle/caches/transforms-3/04cbd5341758ce18e0e39bde5e71d843/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,4 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
+import 'package:bscj_scan/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a [Flushbar] with a message and a notification type.
@@ -22,9 +23,9 @@ Flushbar displayFlushBar(
           Icons.highlight_off_outlined,
           color: Colors.red,
         ),
-      _ => const Icon(
+      _ =>  Icon(
           Icons.check_circle_outline_outlined,
-          color: Colors.green,
+          color: AppGlobalValues.getGreen(),
         ),
     },
     flushbarPosition: position ?? FlushbarPosition.TOP,
@@ -38,7 +39,7 @@ Flushbar displayFlushBar(
     ),
     leftBarIndicatorColor: switch (type) {
       NotificationType.error => Colors.red,
-      _ => Colors.green,
+      _ => AppGlobalValues.getGreen2(),
     },
     duration: const Duration(seconds: 3),
     shouldIconPulse: false,

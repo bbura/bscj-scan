@@ -26,12 +26,43 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Close_X.svg
+  SvgGenImage get closeX => const SvgGenImage('assets/icons/Close_X.svg');
+
+  /// File path: assets/icons/Unlock.svg
+  SvgGenImage get unlock => const SvgGenImage('assets/icons/Unlock.svg');
+
+  /// File path: assets/icons/check_icon.svg
+  SvgGenImage get checkIcon => const SvgGenImage('assets/icons/check_icon.svg');
+
+  /// File path: assets/icons/menu_icon.svg
+  SvgGenImage get menuIcon => const SvgGenImage('assets/icons/menu_icon.svg');
+
+  /// File path: assets/icons/qr_code.svg
+  SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
+
+  /// File path: assets/icons/scan_hand_qd_icon.svg
+  SvgGenImage get scanHandQdIcon =>
+      const SvgGenImage('assets/icons/scan_hand_qd_icon.svg');
+
   /// File path: assets/icons/scanner_frame.svg
   SvgGenImage get scannerFrame =>
       const SvgGenImage('assets/icons/scanner_frame.svg');
 
+  /// File path: assets/icons/shield.svg
+  SvgGenImage get shield => const SvgGenImage('assets/icons/shield.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [scannerFrame];
+  List<SvgGenImage> get values => [
+        closeX,
+        unlock,
+        checkIcon,
+        menuIcon,
+        qrCode,
+        scanHandQdIcon,
+        scannerFrame,
+        shield
+      ];
 }
 
 class BSCJAssets {

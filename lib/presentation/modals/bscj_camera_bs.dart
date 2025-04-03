@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:bscj_scan/core/utils/app_constants.dart';
 import 'package:bscj_scan/core/utils/assets.gen.dart';
 import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:flutter/material.dart';
@@ -68,8 +69,10 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
                     type: NotificationType.error,
                   ).show(context);
                 },
-                placeholderBuilder: (_, widget) =>
-                    Center(child: CircularProgressIndicator()),
+                placeholderBuilder: (_, widget) => Center(
+                    child: CircularProgressIndicator(
+                  color: AppGlobalValues.getGreen(),
+                )),
                 overlayBuilder:
                     (BuildContext context, BoxConstraints constraints) {
                   return Center(

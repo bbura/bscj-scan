@@ -1,6 +1,10 @@
 <svg width="299" height="409" viewBox="0 0 299 409" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M63.0453 2.62891H3.04529V62.6289" stroke="#00CC99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M236.455 406.37L296.455 406.37L296.455 346.37" stroke="#00CC99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M296.455 62.6289L296.455 2.62891L236.455 2.6289" stroke="#00CC99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.0453 346.37L3.04529 406.37L63.0453 406.37" stroke="#00CC99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M63.0453 2.62891H3.04529V62.6289" stroke="#00CC99" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M236.455 406.37L296.455 406.37L296.455 346.37" stroke="#00CC99" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M296.455 62.6289L296.455 2.62891L236.455 2.6289" stroke="#00CC99" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M3.0453 346.37L3.04529 406.37L63.0453 406.37" stroke="#00CC99" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round" />
 </svg>
