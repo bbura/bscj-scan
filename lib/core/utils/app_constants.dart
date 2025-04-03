@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppGlobalValues {
-  static String isReadOnlyCheckerKEY = "isReadOnlyCheckerKEY";
-
   static bool isReadOnlyChecker = true;
 
   static bool isDarkMode = true;

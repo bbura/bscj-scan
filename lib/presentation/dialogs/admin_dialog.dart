@@ -4,7 +4,6 @@ import 'dart:ui';
 import 'package:bscj_scan/core/utils/app_constants.dart';
 import 'package:bscj_scan/core/utils/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// This class is used to display a dialog when the user scans a product with a
@@ -99,9 +98,6 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                               .svg(color: Colors.white),
                         ),
                         onTap: () async {
-                          FlutterSecureStorage().write(
-                              key: AppGlobalValues.isReadOnlyCheckerKEY,
-                              value: true.toString());
                           AppGlobalValues.isReadOnlyChecker = true;
                           Navigator.of(context).pop(true);
                         },
@@ -117,9 +113,6 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                         textColor: AppGlobalValues.getGreen(),
                         textPadding: EdgeInsets.only(left: 2),
                         onTap: () async {
-                          FlutterSecureStorage().write(
-                              key: AppGlobalValues.isReadOnlyCheckerKEY,
-                              value: false.toString());
                           AppGlobalValues.isReadOnlyChecker = false;
                           Navigator.of(context).pop(false);
                         },

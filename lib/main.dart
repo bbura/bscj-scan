@@ -9,7 +9,6 @@ import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_seat.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -90,19 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    FlutterSecureStorage()
-        .read(key: AppGlobalValues.isReadOnlyCheckerKEY)
-        .then((value) {
-      if (value != null && value.contains('false')) {
-        AppGlobalValues.isReadOnlyChecker = false;
-      }
-      AppGlobalValues.isReadOnlyChecker = true;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: UniqueKey(),
@@ -126,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   } else {
                     setState(() {
-                      _isReadOnly = !_isReadOnly;
-                      AppGlobalValues.isReadOnlyChecker = _isReadOnly;
+                      _isReadOnly = true;
+                      AppGlobalValues.isReadOnlyChecker = true;
                     });
                   }
                 },
