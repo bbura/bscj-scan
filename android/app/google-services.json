@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561580256950",
+    "project_id": "bscj-scan",
+    "storage_bucket": "bscj-scan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561580256950:android:5346780dbcea4960e48017",
+        "android_client_info": {
+          "package_name": "com.example.bscj_scan.bscj_scan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwKnonKakYLE5L4241YYOsBeFsH0AeoZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
