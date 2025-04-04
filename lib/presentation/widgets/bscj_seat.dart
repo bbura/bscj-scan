@@ -1,5 +1,6 @@
 import 'package:bscj_scan/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ScannedTicketInfo extends StatelessWidget {
   const ScannedTicketInfo({super.key});
@@ -11,8 +12,7 @@ class ScannedTicketInfo extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.9),
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-              color: AppGlobalValues.getGreen().withOpacity(0.5), width: 1),
+          border: Border.all(color: AppGlobalValues.getGreen().withOpacity(0.5), width: 1),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
@@ -26,16 +26,16 @@ class ScannedTicketInfo extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 14,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
                 color: AppGlobalValues.getGreen2(),
               ),
             ),
             SizedBox(height: 6),
             Text(
               value,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: AppGlobalValues.getGreen(),
@@ -55,9 +55,9 @@ class ScannedTicketInfo extends StatelessWidget {
         // Titlu elegant pentru ultimele date scanate
         Text(
           "Datele ultimei scanări",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             color: AppGlobalValues.getGreen2(),
           ),
         ),
@@ -73,10 +73,7 @@ class ScannedTicketInfo extends StatelessWidget {
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                AppGlobalValues.getGreen().withOpacity(0.2),
-                Colors.white
-              ],
+              colors: [AppGlobalValues.getGreen().withOpacity(0.2), Colors.white],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),

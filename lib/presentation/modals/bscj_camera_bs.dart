@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:bscj_scan/core/utils/app_constants.dart';
 import 'package:bscj_scan/core/utils/assets.gen.dart';
-import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -39,7 +37,7 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      filter: ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.77,
         child: ClipRRect(
@@ -59,37 +57,24 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
                 width: scanWindowWidth,
                 height: scanWindowHeight,
               );
-              return MobileScanner(
-                fit: BoxFit.fill,
-                scanWindow: scanWindow,
-                onDetectError: (obj, str) {
-                  Navigator.of(context).pop();
-                  displayFlushBar(
-                    "Ultima scanare a esuat, te rog sa mai incerci",
-                    type: NotificationType.error,
-                  ).show(context);
-                },
-                placeholderBuilder: (_, widget) => Center(
-                    child: CircularProgressIndicator(
-                  color: AppGlobalValues.getGreen(),
-                )),
-                overlayBuilder:
-                    (BuildContext context, BoxConstraints constraints) {
-                  return Center(
+              return Stack(
+                children: [
+                  MobileScanner(
+                    fit: BoxFit.fill,
+                    controller: controller,
+                    onDetect: (barcode, args) async {
+                      await widget.onCodeScanned(
+                          barcode.rawValue.toString(), controller);
+                    },
+                  ),
+                  Center(
                     child: SizedBox(
                       width: constraints.maxWidth * 0.85,
                       height: constraints.maxHeight * 0.65,
                       child: BSCJAssets.icons.scannerFrame.svg(),
                     ),
-                  );
-                  // return Center(child: BSCJAssets.icons.scannerFrame.svg());
-                },
-                controller: controller,
-                onDetect: (barcodeCapture) async {
-                  await widget.onCodeScanned(
-                      barcodeCapture.barcodes.first.rawValue.toString(),
-                      controller);
-                },
+                  ),
+                ],
               );
             },
           ),

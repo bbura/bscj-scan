@@ -7,10 +7,13 @@ import 'package:bscj_scan/data/models/market_tickets.dart';
 import 'package:bscj_scan/presentation/dialogs/admin_dialog.dart';
 import 'package:bscj_scan/presentation/modals/bscj_camera_bs.dart';
 import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
+import 'package:bscj_scan/presentation/widgets/bscj_pressing_button.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_seat.dart';
+import 'package:bscj_scan/presentation/widgets/bscj_theme_switch.dart';
 import 'package:dartx/dartx.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -140,65 +143,95 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   }
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      _isReadOnly ? 'Mod Vizualizare' : 'Mod Scanare',
-                      maxLines: 3,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: AppGlobalValues.getGreen3(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DarkModeToggle(
+                        onToggle: () {
+                          setState(() {
+                            AppGlobalValues.isDarkMode = !AppGlobalValues.isDarkMode;
+                          });
+                        },
                       ),
-                    ),
-                    SizedBox(width: 5),
-                    if (_isReadOnly)
-                      BSCJAssets.icons.shield.svg(
-                          width: 20,
-                          height: 20,
-                          color: AppGlobalValues.getShieldColor())
-                    else
-                      BSCJAssets.icons.unlock.svg(
-                          width: 20,
-                          height: 20,
-                          color: AppGlobalValues.getShieldColor()),
-                    SizedBox(
-                      width: 16,
-                    )
-                  ],
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            _isReadOnly ? 'Mod Vizualizare' : 'Mod Scanare',
+                            maxLines: 3,
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: AppGlobalValues.getGreen3(),
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          if (_isReadOnly)
+                            BSCJAssets.icons.shield
+                                .svg(width: 20, height: 20, color: AppGlobalValues.getShieldColor())
+                          else
+                            BSCJAssets.icons.unlock.svg(
+                                width: 20, height: 20, color: AppGlobalValues.getShieldColor()),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    AppGlobalValues.isDarkMode = !AppGlobalValues.isDarkMode;
-                  });
+              PressableCircleButton(
+                onPressed: () async {
+                  await BSCJCameraBottomSheet.show(
+                    context: context,
+                    onCodeScanned: (String scannedCode, MobileScannerController controller) async {
+                      controller.dispose();
+                      Navigator.of(context).pop();
+                      displayFlushBar(
+                        "Ultima scanare a reusit, felicitari !",
+                        type: NotificationType.success,
+                      ).show(context);
+                      final now = DateTime.now();
+                      final isAfter19 = now.hour >= 19;
+                      String seat = '-';
+                      String row = '-';
+                      String sector = '-';
+                      String zone = '-';
+                      TicketM? ticket;
+
+                      if (isAfter19) {
+                        ticket = listOfTickets20.firstOrNullWhere(
+                            (ticket) => scannedCode.contains(ticket.token.toString()));
+                      } else {
+                        ticket = listOfTickets17.firstOrNullWhere(
+                            (ticket) => scannedCode.contains(ticket.token.toString()));
+                      }
+
+                      if (ticket != null) {
+                        seat = ticket.seat.toString();
+                        row = ticket.row.toString();
+                        sector = ticket.sector.toString();
+                        RegExp regex = RegExp(r'([A-Z])$'); // Matches the last uppercase letter
+                        Match? match = regex.firstMatch(sector);
+                        zone = match != null ? match.group(1)! : '';
+                      } else {
+                        displayFlushBar(
+                          "Ultima scanare a esuat, ne pare rau.",
+                          type: NotificationType.error,
+                        ).show(context);
+                      }
+
+                      setState(() {
+                        contor++;
+                        AppGlobalValues.lastScannedSeat = seat;
+                        AppGlobalValues.lastScannedRow = row;
+                        AppGlobalValues.lastScannedSector = zone;
+                      });
+                    },
+                  );
                 },
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 0.7,
-                  height: MediaQuery.sizeOf(context).width * 0.7,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppGlobalValues.getGreen().withOpacity(0.1),
-                    // Adjust transparency
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppGlobalValues.getGreen().withOpacity(0.1),
-                        blurRadius: 10,
-                        spreadRadius: 20,
-                      ),
-                    ],
-                  ),
-                  child: Icon(
-                    Icons.qr_code_scanner, // Example icon
-                    size: MediaQuery.sizeOf(context).width * 0.35,
-                    color: AppGlobalValues.getGreen(),
-                  ),
-                ),
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               Padding(
@@ -210,71 +243,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: MediaQuery.sizeOf(context).width * 0.8,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () async {
-                    await BSCJCameraBottomSheet.show(
-                      context: context,
-                      onCodeScanned: (String scannedCode,
-                          MobileScannerController controller) async {
-                        controller.dispose();
-                        Navigator.of(context).pop();
-                        displayFlushBar(
-                          "Ultima scanare a reusit, felicitari !",
-                          type: NotificationType.success,
-                        ).show(context);
-                        final now = DateTime.now();
-                        final isAfter19 = now.hour >= 19;
-                        String seat = '-';
-                        String row = '-';
-                        String sector = '-';
-                        String zone = '-';
-                        TicketM? ticket;
-
-                        if (isAfter19) {
-                          ticket = listOfTickets20.firstOrNullWhere((ticket) =>
-                              scannedCode.contains(ticket.token.toString()));
-                        } else {
-                          ticket = listOfTickets17.firstOrNullWhere((ticket) =>
-                              scannedCode.contains(ticket.token.toString()));
-                        }
-
-                        if (ticket != null) {
-                          seat = ticket.seat.toString();
-                          row = ticket.row.toString();
-                          sector = ticket.sector.toString();
-                          RegExp regex = RegExp(
-                              r'([A-Z])$'); // Matches the last uppercase letter
-                          Match? match = regex.firstMatch(sector);
-                          zone = match != null ? match.group(1)! : '';
-                        } else {
-                          displayFlushBar(
-                            "Ultima scanare a esuat, ne pare rau.",
-                            type: NotificationType.error,
-                          ).show(context);
-                        }
-
-                        setState(() {
-                          contor++;
-                          AppGlobalValues.lastScannedSeat = seat;
-                          AppGlobalValues.lastScannedRow = row;
-                          AppGlobalValues.lastScannedSector = zone;
-                        });
-                      },
-                    );
-                  },
+                  onPressed: () async {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppGlobalValues.getGreen(),
                     // Button color
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(10), // Rounded corners
+                      borderRadius: BorderRadius.circular(10), // Rounded corners
                     ),
                   ),
                   child: Text(
-                    "Scanează bilet",
-                    style: TextStyle(
+                    "Căutare avansată",
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.4,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.2,
                       fontSize: 18, // Adjust font size as needed
                     ),
                   ),

@@ -58,12 +58,9 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                     "Schimbi modul ?",
                     maxLines: 1,
                     style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                        color: AppGlobalValues.getGreen3(),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                      ),
+                      color: AppGlobalValues.getGreen3(),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
                     ),
                   ),
                   SizedBox(height: 5),
@@ -71,8 +68,7 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                     "Aici apesi \"DA\" doar daca esti la poarta la scanare",
                     maxLines: 3,
                     textAlign: TextAlign.start,
-                    style: TextStyle(
-                      overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: AppGlobalValues.getGreen3(),
@@ -88,14 +84,13 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                         textColor: AppGlobalValues.getBackgroundColor(),
                         textPadding: EdgeInsets.only(left: 5),
                         iconAlignment: IconAlignment.farFromTextLeft,
-                        borderColor: AppGlobalValues.getGreen(),
+                        borderColor: AppGlobalValues.getGreen3(),
                         icon: ColorFiltered(
-                          colorFilter:  ColorFilter.mode(
+                          colorFilter: ColorFilter.mode(
                             AppGlobalValues.getBackgroundColor(),
                             BlendMode.srcATop,
                           ),
-                          child: BSCJAssets.icons.checkIcon
-                              .svg(color: Colors.white),
+                          child: BSCJAssets.icons.checkIcon.svg(color: Colors.white),
                         ),
                         onTap: () async {
                           AppGlobalValues.isReadOnlyChecker = true;
@@ -105,12 +100,12 @@ class _BSCJAdminDialogState extends State<BSCJAdminDialog> {
                         width: 100,
                         height: 50,
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(width: 5),
                       ElevatedActionButton(
                         textSize: 16,
                         fontWeight: FontWeight.w600,
                         backgroundColor: Colors.transparent,
-                        textColor: AppGlobalValues.getGreen(),
+                        textColor: AppGlobalValues.getGreen3(),
                         textPadding: EdgeInsets.only(left: 2),
                         onTap: () async {
                           AppGlobalValues.isReadOnlyChecker = false;
@@ -212,8 +207,7 @@ class ElevatedActionButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           padding: contentPadding ?? EdgeInsets.zero,
           elevation: elevation ?? 0,
-          disabledBackgroundColor:
-              (backgroundColor ?? Colors.orange[800]!).withOpacity(0.25),
+          disabledBackgroundColor: (backgroundColor ?? Colors.orange[800]!).withOpacity(0.25),
           backgroundColor: backgroundColor ?? Colors.orange[800],
           side: borderWidth != 0
               ? BorderSide(
@@ -241,9 +235,8 @@ class ElevatedActionButton extends StatelessWidget {
                           iconAlignment == IconAlignment.farFromTextLeft))
                     Padding(
                       padding: iconPadding ?? EdgeInsets.zero,
-                      child: isIconConstrained
-                          ? SizedBox(height: 20, width: 20, child: icon)
-                          : icon,
+                      child:
+                          isIconConstrained ? SizedBox(height: 20, width: 20, child: icon) : icon,
                     ),
                   Padding(
                     padding: textPadding ?? EdgeInsets.zero,
@@ -257,18 +250,14 @@ class ElevatedActionButton extends StatelessWidget {
                       child: Text(
                         text,
                         overflow: TextOverflow.ellipsis,
-                        textAlign:
-                            iconAlignment == IconAlignment.boundWithTextLeft ||
-                                    iconAlignment ==
-                                        IconAlignment.boundWithTextRight
-                                ? TextAlign.start
-                                : TextAlign.center,
+                        textAlign: iconAlignment == IconAlignment.boundWithTextLeft ||
+                                iconAlignment == IconAlignment.boundWithTextRight
+                            ? TextAlign.start
+                            : TextAlign.center,
                         style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: textColor,
-                            fontWeight: fontWeight ?? FontWeight.w500,
-                            fontSize: textSize,
-                          ),
+                          color: textColor,
+                          fontWeight: fontWeight ?? FontWeight.w500,
+                          fontSize: textSize,
                         ),
                       ),
                     ),
