@@ -1,18 +1,21 @@
 import 'dart:math';
 
 import 'package:bscj_scan/core/utils/assets.gen.dart';
+import 'package:bscj_scan/data/datasource/local/mocked.dart';
 import 'package:bscj_scan/data/datasource/paysera_schema.dart';
 import 'package:bscj_scan/data/models/market_tickets.dart';
 import 'package:bscj_scan/presentation/dialogs/admin_dialog.dart';
 import 'package:bscj_scan/presentation/modals/bscj_camera_bs.dart';
 import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_seat.dart';
+import 'package:dartx/dartx.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'core/utils/app_constants.dart';
+import 'data/models/ticketm_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,6 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<TicketM> listOfTickets17 = [];
+  final List<TicketM> listOfTickets20 = [];
   bool _isReadOnly = AppGlobalValues.isReadOnlyChecker;
   String _dataResponse = "";
   int contor = 0;
@@ -89,6 +94,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    for (final ticket in MockData.tickets17) {
+      final model = TicketM.fromJson(
+        ticket as Map<String, dynamic>,
+      );
+      listOfTickets17.add(model);
+    }
+
+    for (final ticket in MockData.tickets20) {
+      final model = TicketM.fromJson(
+        ticket as Map<String, dynamic>,
+      );
+      listOfTickets20.add(model);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: UniqueKey(),
@@ -101,7 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               GestureDetector(
                 onTap: () async {
-                  print("long press");
                   if (_isReadOnly) {
                     final isReadOnly = await BSCJAdminDialog.show(context);
                     if (isReadOnly is bool) {
@@ -193,17 +215,60 @@ class _MyHomePageState extends State<MyHomePage> {
                       onCodeScanned: (String scannedCode,
                           MobileScannerController controller) async {
                         controller.dispose();
-                        print("scanned code: $scannedCode");
                         Navigator.of(context).pop();
                         displayFlushBar(
                           "Ultima scanare a reusit, felicitari",
                           type: NotificationType.success,
                         ).show(context);
+                        final now = DateTime.now();
+                        final isAfter19 = now.hour >= 19;
+                        String seat = '-';
+                        String row = '-';
+                        String sector = '';
+
+                        if (isAfter19) {
+                          final ticket = listOfTickets20.firstOrNullWhere(
+                              (ticket) => ticket.token
+                                  .toString()
+                                  .contains(scannedCode));
+                          if (ticket != null) {
+                            seat = ticket.seat.toString();
+                            row = ticket.row.toString();
+                            sector = ticket.sector.toString();
+                          } else {
+                            displayFlushBar(
+                              "Ultima scanare a esuat, ne pare rau",
+                              type: NotificationType.error,
+                            ).show(context);
+                          }
+                        } else {
+                          final ticket = listOfTickets17.firstOrNullWhere(
+                              (ticket) => ticket.token
+                                  .toString()
+                                  .contains(scannedCode));
+
+                          if (ticket != null) {
+                            seat = ticket.seat.toString();
+                            row = ticket.row.toString();
+                            sector = ticket.sector.toString();
+                          } else {
+                            displayFlushBar(
+                              "Ultima scanare a esuat, ne pare rau",
+                              type: NotificationType.error,
+                            ).show(context);
+                          }
+                        }
+
+                        RegExp regex = RegExp(
+                            r'([A-Z])$'); // Matches the last uppercase letter
+                        Match? match = regex.firstMatch(sector);
+                        String zone = match != null ? match.group(1)! : '';
+
                         setState(() {
                           contor++;
-                          AppGlobalValues.lastScannedSeat = contor.toString();
-                          AppGlobalValues.lastScannedRow = "B3";
-                          AppGlobalValues.lastScannedSector = "Zona B";
+                          AppGlobalValues.lastScannedSeat = seat;
+                          AppGlobalValues.lastScannedRow = row;
+                          AppGlobalValues.lastScannedSector = zone;
                         });
                       },
                     );

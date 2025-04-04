@@ -27,7 +27,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/archive-4.0.5",
+      "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/archive-3.6.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -174,6 +174,18 @@
       "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/equatable-2.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "excel",
+      "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/excel-4.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "fake_async",
@@ -518,12 +530,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "posix",
-      "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/posix-6.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "pretty_dio_logger",
       "rootUri": "file:///Users/flaviuburabusiness/.pub-cache/hosted/pub.dev/pretty_dio_logger-1.4.0",
       "packageUri": "lib/",
@@ -734,7 +740,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-04-03T15:12:45.735987Z",
+  "generated": "2025-04-04T08:48:33.464035Z",
   "generator": "pub",
   "generatorVersion": "3.6.1",
   "flutterRoot": "file:///Users/flaviuburabusiness/fvm/versions/3.27.3",

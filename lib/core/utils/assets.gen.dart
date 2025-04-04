@@ -65,11 +65,38 @@ class $AssetsIconsGen {
       ];
 }
 
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/finalTicket17.json
+  String get finalTicket17 => 'assets/json/finalTicket17.json';
+
+  /// File path: assets/json/finalTicket20.json
+  String get finalTicket20 => 'assets/json/finalTicket20.json';
+
+  /// File path: assets/json/order_17.json
+  String get order17 => 'assets/json/order_17.json';
+
+  /// File path: assets/json/order_20.json
+  String get order20 => 'assets/json/order_20.json';
+
+  /// File path: assets/json/ticket_20.json
+  String get ticket20 => 'assets/json/ticket_20.json';
+
+  /// File path: assets/json/tickets_17.json
+  String get tickets17 => 'assets/json/tickets_17.json';
+
+  /// List of all assets
+  List<String> get values =>
+      [finalTicket17, finalTicket20, order17, order20, ticket20, tickets17];
+}
+
 class BSCJAssets {
   const BSCJAssets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class SvgGenImage {
