@@ -19,6 +19,10 @@ Flushbar displayFlushBar(
     margin: EdgeInsets.symmetric(horizontal: 16),
     backgroundColor: Colors.white,
     icon: switch (type) {
+      NotificationType.warning => const Icon(
+        Icons.warning,
+        color: Color(0xFFFFD700),
+      ),
       NotificationType.error => const Icon(
           Icons.highlight_off_outlined,
           color: Colors.red,
@@ -32,12 +36,14 @@ Flushbar displayFlushBar(
     messageText: Text(message, style: const TextStyle(color: Colors.black)),
     titleText: Text(
       switch (type) {
+        NotificationType.warning => "Nota informativa",
         NotificationType.error => "Eroare de scanare",
         _ => "Scanare efectuata cu success",
       },
       style: const TextStyle(fontWeight: FontWeight.bold),
     ),
     leftBarIndicatorColor: switch (type) {
+      NotificationType.warning => Color(0xFFFFD700),
       NotificationType.error => Colors.red,
       _ => AppGlobalValues.getGreen2(),
     },
