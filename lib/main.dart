@@ -217,52 +217,39 @@ class _MyHomePageState extends State<MyHomePage> {
                         controller.dispose();
                         Navigator.of(context).pop();
                         displayFlushBar(
-                          "Ultima scanare a reusit, felicitari",
+                          "Ultima scanare a reusit, felicitari !",
                           type: NotificationType.success,
                         ).show(context);
                         final now = DateTime.now();
                         final isAfter19 = now.hour >= 19;
                         String seat = '-';
                         String row = '-';
-                        String sector = '';
+                        String sector = '-';
+                        String zone = '-';
+                        TicketM? ticket;
 
                         if (isAfter19) {
-                          final ticket = listOfTickets20.firstOrNullWhere(
-                              (ticket) => ticket.token
-                                  .toString()
-                                  .contains(scannedCode));
-                          if (ticket != null) {
-                            seat = ticket.seat.toString();
-                            row = ticket.row.toString();
-                            sector = ticket.sector.toString();
-                          } else {
-                            displayFlushBar(
-                              "Ultima scanare a esuat, ne pare rau",
-                              type: NotificationType.error,
-                            ).show(context);
-                          }
+                          ticket = listOfTickets20.firstOrNullWhere((ticket) =>
+                              scannedCode.contains(ticket.token.toString()));
                         } else {
-                          final ticket = listOfTickets17.firstOrNullWhere(
-                              (ticket) => ticket.token
-                                  .toString()
-                                  .contains(scannedCode));
-
-                          if (ticket != null) {
-                            seat = ticket.seat.toString();
-                            row = ticket.row.toString();
-                            sector = ticket.sector.toString();
-                          } else {
-                            displayFlushBar(
-                              "Ultima scanare a esuat, ne pare rau",
-                              type: NotificationType.error,
-                            ).show(context);
-                          }
+                          ticket = listOfTickets17.firstOrNullWhere((ticket) =>
+                              scannedCode.contains(ticket.token.toString()));
                         }
 
-                        RegExp regex = RegExp(
-                            r'([A-Z])$'); // Matches the last uppercase letter
-                        Match? match = regex.firstMatch(sector);
-                        String zone = match != null ? match.group(1)! : '';
+                        if (ticket != null) {
+                          seat = ticket.seat.toString();
+                          row = ticket.row.toString();
+                          sector = ticket.sector.toString();
+                          RegExp regex = RegExp(
+                              r'([A-Z])$'); // Matches the last uppercase letter
+                          Match? match = regex.firstMatch(sector);
+                          zone = match != null ? match.group(1)! : '';
+                        } else {
+                          displayFlushBar(
+                            "Ultima scanare a esuat, ne pare rau.",
+                            type: NotificationType.error,
+                          ).show(context);
+                        }
 
                         setState(() {
                           contor++;

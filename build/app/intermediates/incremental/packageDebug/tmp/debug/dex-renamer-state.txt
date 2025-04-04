@@ -1,4 +1,4 @@
-#Fri Apr 04 11:46:20 EEST 2025
+#Fri Apr 04 12:21:38 EEST 2025
 base.0=/Users/flaviuburabusiness/bscj-scan/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/flaviuburabusiness/bscj-scan/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/Users/flaviuburabusiness/bscj-scan/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex

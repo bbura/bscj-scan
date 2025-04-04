@@ -25,6 +25,25 @@ class AppGlobalValues {
       ? Color(0xFF121212)
       : Colors.white; // True dark background
 
+
+  // static Color getYellow() =>
+  //     AppGlobalValues.isDarkMode ? Color(0xFFFFD700) : Color(0xFFFFD700); // Gold
+  //
+  // static Color getYellow2() =>
+  //     AppGlobalValues.isDarkMode ? Color(0xFFCCAA00) : Color(0xFFCCAA00); // Darker gold
+  //
+  // static Color getYellow3() => AppGlobalValues.isDarkMode
+  //     ? Colors.white
+  //     : Color(0xFF806600); // Even darker shade
+  //
+  // static Color getAccentColor() => AppGlobalValues.isDarkMode
+  //     ? Colors.white
+  //     : getYellow2(); // Accent color
+  //
+  // static Color getBackgroundColor() => AppGlobalValues.isDarkMode
+  //     ? Color(0xFF121212)
+  //     : Colors.white; // True dark background
+  //
   static String lastScannedSector = "-";
   static String lastScannedSeat = '-';
   static String lastScannedRow = '-';
