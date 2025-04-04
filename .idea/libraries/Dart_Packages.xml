@@ -126,41 +126,6 @@
             </list>
           </value>
         </entry>
-        <entry key="camera">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera-0.10.6/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="camera_android">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_android-0.10.10+2/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="camera_avfoundation">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.18+13/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="camera_platform_interface">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_platform_interface-2.10.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="camera_web">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_web-0.3.5/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="characters">
           <value>
             <list>
@@ -223,13 +188,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/coverage-1.11.1/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="cross_file">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/cross_file-0.3.4+2/lib" />
             </list>
           </value>
         </entry>
@@ -413,13 +371,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="flutter_plugin_android_lifecycle">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/lib" />
             </list>
           </value>
         </entry>
@@ -806,48 +757,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler-11.4.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler_android">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_android-12.1.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler_apple">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler_html">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+5/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler_platform_interface">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.3.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="permission_handler_windows">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/lib" />
             </list>
           </value>
         </entry>
@@ -1291,11 +1200,6 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/built_collection-5.1.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/built_value-8.9.3/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/built_value-8.9.5/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera-0.10.6/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_android-0.10.10+2/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.18+13/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_platform_interface-2.10.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/camera_web-0.3.5/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/characters-1.3.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/checked_yaml-2.0.3/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/clock-1.1.1/lib" />
@@ -1307,7 +1211,6 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/completion-1.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/convert-3.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/coverage-1.11.1/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/cross_file-0.3.4+2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/crypto-3.0.6/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/csslib-1.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8/lib" />
@@ -1334,7 +1237,6 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_gen_core-5.10.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_gen_runner-5.10.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_secure_storage_linux-1.2.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.3/lib" />
@@ -1395,12 +1297,6 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler-11.4.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_android-12.1.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_html-0.1.3+5/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.3.0/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/petitparser-6.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/petitparser-6.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/platform-3.1.6/lib" />
