@@ -14,6 +14,7 @@ import 'package:bscj_scan/presentation/widgets/bscj_theme_switch.dart';
 import 'package:dartx/dartx.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -99,6 +100,25 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    FlutterSecureStorage()
+        .read(
+      key: AppGlobalValues.isDarkModeKey,
+    )
+        .then((value) {
+      if (value == null) {
+        FlutterSecureStorage().write(
+          key: AppGlobalValues.isDarkModeKey,
+          value: true.toString(),
+        );
+        AppGlobalValues.isDarkMode = true;
+      } else {
+        AppGlobalValues.isDarkMode = value == 'true';
+      }
+      if (mounted) {
+        setState(() {});
+      }
+    });
+
     for (final ticket in MockData.tickets17) {
       final model = TicketM.fromJson(
         ticket as Map<String, dynamic>,
@@ -151,6 +171,10 @@ class MyHomePageState extends State<MyHomePage> {
                         onToggle: () {
                           setState(() {
                             AppGlobalValues.isDarkMode = !AppGlobalValues.isDarkMode;
+                            FlutterSecureStorage().write(
+                              key: AppGlobalValues.isDarkModeKey,
+                              value: AppGlobalValues.isDarkMode.toString(),
+                            );
                           });
                         },
                       ),
@@ -186,11 +210,8 @@ class MyHomePageState extends State<MyHomePage> {
                   await BSCJCameraBottomSheet.show(
                     context: context,
                     onCodeScanned: (String scannedCode, MobileScannerController controller) async {
-                      print("here 1");
                       controller.dispose();
-                      print("here 2");
                       Navigator.of(context).pop();
-                      print("here 3");
                       final now = DateTime.now();
                       final isAfter19 = now.hour >= 19;
                       String seat = '-';

@@ -55,7 +55,6 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
                     controller: controller,
                     onDetect: (barcode, args) async {
                       await Future.delayed(Duration(milliseconds: 500));
-                      print("valoare scanata: ${ barcode.rawValue.toString()}");
                       await widget.onCodeScanned(
                           barcode.rawValue.toString(), controller);
                     },

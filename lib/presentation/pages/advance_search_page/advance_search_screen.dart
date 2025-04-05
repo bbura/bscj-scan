@@ -89,7 +89,6 @@ class _AdvanceSearchScreenState extends State<AdvanceSearchScreen> {
                             return;
                           }
                           _listOfSeachedTickets = [];
-                          print("search pressed with text: $searchText");
                           final isAfter19 = DateTime.now().hour >= 19;
 
                           List<TicketM> tickets =
