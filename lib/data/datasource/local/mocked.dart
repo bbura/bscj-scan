@@ -1,4 +1,9 @@
+import 'package:bscj_scan/data/models/ticketm_model.dart';
+
 class MockData{
+
+  static List<TicketM> listOfTickets17 = [];
+  static List<TicketM> listOfTickets20 = [];
 
   static List<dynamic> tickets17 = [
     {

@@ -7,6 +7,7 @@ import 'package:bscj_scan/data/models/market_tickets.dart';
 import 'package:bscj_scan/presentation/dialogs/admin_dialog.dart';
 import 'package:bscj_scan/presentation/modals/bscj_camera_bs.dart';
 import 'package:bscj_scan/presentation/modals/bscj_flush_bar.dart';
+import 'package:bscj_scan/presentation/pages/advance_search_page/advance_search_screen.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_pressing_button.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_seat.dart';
 import 'package:bscj_scan/presentation/widgets/bscj_theme_switch.dart';
@@ -48,12 +49,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final List<TicketM> listOfTickets17 = [];
-  final List<TicketM> listOfTickets20 = [];
+class MyHomePageState extends State<MyHomePage> {
   bool _isReadOnly = AppGlobalValues.isReadOnlyChecker;
   String _dataResponse = "";
   int contor = 0;
@@ -104,14 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
       final model = TicketM.fromJson(
         ticket as Map<String, dynamic>,
       );
-      listOfTickets17.add(model);
+      MockData.listOfTickets17.add(model);
     }
 
     for (final ticket in MockData.tickets20) {
       final model = TicketM.fromJson(
         ticket as Map<String, dynamic>,
       );
-      listOfTickets20.add(model);
+      MockData.listOfTickets20.add(model);
     }
   }
 
@@ -187,12 +186,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   await BSCJCameraBottomSheet.show(
                     context: context,
                     onCodeScanned: (String scannedCode, MobileScannerController controller) async {
+                      print("here 1");
                       controller.dispose();
+                      print("here 2");
                       Navigator.of(context).pop();
-                      displayFlushBar(
-                        "Ultima scanare a reusit, felicitari !",
-                        type: NotificationType.success,
-                      ).show(context);
+                      print("here 3");
                       final now = DateTime.now();
                       final isAfter19 = now.hour >= 19;
                       String seat = '-';
@@ -202,10 +200,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       TicketM? ticket;
 
                       if (isAfter19) {
-                        ticket = listOfTickets20.firstOrNullWhere(
+                        ticket = MockData.listOfTickets20.firstOrNullWhere(
                             (ticket) => scannedCode.contains(ticket.token.toString()));
                       } else {
-                        ticket = listOfTickets17.firstOrNullWhere(
+                        ticket = MockData.listOfTickets17.firstOrNullWhere(
                             (ticket) => scannedCode.contains(ticket.token.toString()));
                       }
 
@@ -218,8 +216,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         zone = match != null ? match.group(1)! : '';
                       } else {
                         displayFlushBar(
-                          "Ultima scanare a esuat, ne pare rau.",
+                          "Ultima scanare a esuat, te rog sa mai incerci",
                           type: NotificationType.error,
+                        ).show(context);
+                      }
+
+                      if (ticket != null) {
+                        displayFlushBar(
+                          "Ultima scanare a reusit, felicitari !",
+                          type: NotificationType.success,
                         ).show(context);
                       }
 
@@ -244,10 +249,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () async {
-                    displayFlushBar(
-                      "Functionalitate in curs de dezvoltare!",
-                      type: NotificationType.warning,
-                    ).show(context);
+                    await Navigator.of(context).push(MaterialPageRoute<void>(
+                      builder: (BuildContext context) => AdvanceSearchScreen(),
+                    ));
+                    FocusScope.of(context).unfocus();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppGlobalValues.getGreen(),

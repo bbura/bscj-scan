@@ -47,22 +47,15 @@ class _BSCJCameraBottomSheetState extends State<BSCJCameraBottomSheet> {
           ),
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              final Size layoutSize = constraints.biggest;
-
-              final double scanWindowWidth = layoutSize.width * 0.85;
-              final double scanWindowHeight = layoutSize.height * 0.65;
-
-              final Rect scanWindow = Rect.fromCenter(
-                center: layoutSize.center(Offset.zero),
-                width: scanWindowWidth,
-                height: scanWindowHeight,
-              );
               return Stack(
                 children: [
                   MobileScanner(
                     fit: BoxFit.fill,
+                    allowDuplicates: false,
                     controller: controller,
                     onDetect: (barcode, args) async {
+                      await Future.delayed(Duration(milliseconds: 500));
+                      print("valoare scanata: ${ barcode.rawValue.toString()}");
                       await widget.onCodeScanned(
                           barcode.rawValue.toString(), controller);
                     },

@@ -49,6 +49,9 @@ class $AssetsIconsGen {
   SvgGenImage get scannerFrame =>
       const SvgGenImage('assets/icons/scanner_frame.svg');
 
+  /// File path: assets/icons/search.svg
+  SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
+
   /// File path: assets/icons/shield.svg
   SvgGenImage get shield => const SvgGenImage('assets/icons/shield.svg');
 
@@ -61,6 +64,7 @@ class $AssetsIconsGen {
         qrCode,
         scanHandQdIcon,
         scannerFrame,
+        search,
         shield
       ];
 }
